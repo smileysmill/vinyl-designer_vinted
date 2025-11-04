@@ -69,3 +69,40 @@ canvas{display:block;width:100%;height:100%}
     font-size: 14px;
   }
 }
+
+/* ==== Mobile/Small-screen fixes ==== */
+
+/* Panels dürfen nicht breiter als der Screen sein */
+.panel {
+  max-width: 100vw;
+  overflow-x: auto;                 /* horizontal scrollen, falls zu breit */
+  -webkit-overflow-scrolling: touch;/* flüssiges Scrollen auf iOS */
+  box-sizing: border-box;
+  padding-left: 12px;               /* damit links nichts abgeschnitten wird */
+  padding-right: 12px;
+}
+
+/* Elemente im Panel nicht zusammenschieben */
+.panel > * { flex: 0 0 auto; }
+
+/* Toolbar & Panels mit Seiten-Padding, damit nichts am Rand klebt */
+#toolbar, #panels { padding: 0 10px; }
+
+/* Auf sehr kleinen Screens lieber umbrechen und volle Breite nutzen */
+@media (max-width: 480px) {
+  .panel {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .panel label { width: auto; }
+  /* Eingaben angenehm groß */
+  .panel input[type="text"],
+  .panel input[type="number"],
+  .panel select {
+    min-width: 120px;
+  }
+  .panel input[type="color"] { width: 44px; height: 32px; }
+  /* Canvas skaliert mit */
+  #label { width: 92vw; height: 92vw; }
+}
