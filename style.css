@@ -1,0 +1,71 @@
+:root{
+  --bg:#1f2937; --ink:#fff; --btn:#005075; --btnh:#006999; --panel:rgba(255,255,255,.09);
+  --ring:#333;
+}
+*{box-sizing:border-box}
+body{font-family:Arial, sans-serif;background:var(--bg);color:var(--ink);margin:0}
+header{padding:20px 14px;text-align:center}
+h1{margin:8px 0 10px;font-size:32px}
+
+#langBar{display:flex;gap:8px;justify-content:center}
+#langBar button{padding:6px 10px;border:none;border-radius:6px;cursor:pointer}
+
+#toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0 14px}
+button{background:var(--btn);color:#fff;border:none;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer}
+button:hover{background:var(--btnh)}
+button.secondary{background:#374151}button.secondary:hover{background:#4b5563}
+
+#panels{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.panel{display:inline-flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--panel);padding:10px 12px;border-radius:10px}
+.panel label{display:inline-flex;align-items:center;gap:6px}
+.panel input,.panel select{padding:6px;border:1px solid #cfcfcf;border-radius:6px;background:#fff;color:#111;flex:0 0 auto}
+.panel input[type="color"]{width:44px;height:32px;padding:0}
+#elementSelect{min-width:180px}
+.group{display:none}.group-text{display:inline-flex}
+
+main{display:flex;justify-content:center;padding:16px}
+#stageWrap{position:relative}
+#label{width:600px;height:600px;border-radius:50%;overflow:hidden;border:2px solid var(--ring);background:#fff}
+canvas{display:block;width:100%;height:100%}
+
+/* Trash (drop to delete) */
+#trash{position:absolute;right:-56px;top:-56px;width:48px;height:48px;border-radius:12px;
+  background:#ef4444;display:flex;align-items:center;justify-content:center;font-size:26px;user-select:none}
+#trash.drag{outline:3px dashed #fff}
+
+/* Mobile tweaks */
+@media (max-width:740px){
+  #label{width:92vw;height:92vw}
+  #trash{right:0;top:-56px}
+}
+
+/* === Mobile Anpassung === */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  #labelContainer {
+    width: 90vw;      /* nimmt 90% der Bildschirmbreite */
+    height: 90vw;     /* bleibt quadratisch */
+  }
+
+  canvas {
+    width: 100%;
+    height: 100%;
+  }
+
+  #panel {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  button, select, input[type="color"], input[type="number"] {
+    font-size: 14px;
+  }
+}
